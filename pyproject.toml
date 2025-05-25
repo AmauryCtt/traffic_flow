@@ -1,0 +1,9 @@
+[project]
+name = "trafficflow"
+version = "0.1.0"
+description = "Calcul du débit horaire maximal de véhicules dans un réseau routier orienté"
+authors = [{name = "Votre Nom", email = "email@example.com"}]
+dependencies = ["networkx"]
+
+[tool.setuptools.packages.find]
+where = ["."]
