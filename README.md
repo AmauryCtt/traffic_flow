@@ -1,12 +1,12 @@
 # Traffic Flow
 
-Ce projet calcule le débit horaire maximal de véhicules entre un point d'entrée (E) et un point de sortie (S) dans un réseau routier dirigé.
+Ce projet calcule **le débit horaire maximal de véhicules** entre un point d'entrée (E) et un point de sortie (S) dans un réseau routier dirigé.
 
 ## Installation
 
 ```bash
 uv venv
-source .venv/bin/activate  # ou .venv\Scripts\activate sur Windows
+source .venv/bin/activate  
 uv pip install -e .
 ```
 
@@ -14,6 +14,7 @@ uv pip install -e .
 
 ```bash
 python demo.py
+python demo2.py
 ```
 
 ## Tests
