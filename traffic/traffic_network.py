@@ -103,3 +103,47 @@ def max_vehicule_avec_flux(source="E", sink="S"):
     flow_value, flow_dict = nx.maximum_flow(G, source, sink, flow_func=nx.algorithms.flow.edmonds_karp)
     return flow_value, flow_dict
 
+
+## Question 4
+"""
+    Analyse  de la variation du débit maximal lorsque la capacité de la ville d varie
+"""
+def variation_d(plage=range(2, 10), source="E", sink="S"):
+    resultats = {}
+
+    for cap_d in plage:
+        ville_cap_modif = ville_cap.copy()
+        ville_cap_modif["d"] = cap_d
+
+        G = nx.DiGraph()
+
+        for ville, cap in ville_cap_modif.items():
+            G.add_edge(f"{ville}_in", f"{ville}_out", capacity=cap)
+
+        arete = [
+            ("E", "a", 5),
+            ("E", "b", 10),
+            ("E", "e", 8),
+            ("a", "c", 7),
+            ("a", "d", 10),
+            ("b", "c", 8),
+            ("b", "d", 2),
+            ("b", "e", 1),
+            ("c", "g", 7),
+            ("d", "g", 4),
+            ("d", "f", 2),
+            ("d", "S", 6),
+            ("e", "f", 4),
+            ("f", "S", 6),
+            ("g", "S", 10),
+        ]
+
+        for u, v, cap in arete:
+            u_ = f"{u}_out" if u in ville_cap_modif else u
+            v_ = f"{v}_in" if v in ville_cap_modif else v
+            G.add_edge(u_, v_, capacity=cap)
+
+        flow_value, _ = nx.maximum_flow(G, source, sink, flow_func=nx.algorithms.flow.edmonds_karp)
+        resultats[cap_d] = flow_value
+
+    return resultats
