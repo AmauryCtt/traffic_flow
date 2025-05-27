@@ -14,7 +14,6 @@ uv pip install -e .
 
 ```bash
 python demo.py
-python demo2.py
 ```
 
 ## Tests
